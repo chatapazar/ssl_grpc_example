@@ -7,11 +7,11 @@ import time
 
 import service_pb2
 import service_pb2_grpc
-
+import os
 
 class ServerServicer(service_pb2_grpc.ServerServicer):
     def Foo(self, request, context):
-        return service_pb2.Empty(message='Hello! Current time is ' + time.ctime())
+        return service_pb2.Empty(message='Host: ' + os.getenv('HOSTNAME') +' ,Hello! Current time is ' + time.ctime())
 
 def main():
     port = '8080'
